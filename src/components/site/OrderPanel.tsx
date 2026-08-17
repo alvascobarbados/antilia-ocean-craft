@@ -18,7 +18,13 @@ function groupBySeries(lines: OrderLine[]) {
   return [...groups.entries()];
 }
 
-export function OrderPanel({ onNavigate }: { onNavigate?: () => void }) {
+export function OrderPanel({
+  onNavigate,
+  variant = "page",
+}: {
+  onNavigate?: () => void;
+  variant?: "page" | "drawer";
+}) {
   const { lines, pieces, totalCost, totalCbm, setQty, removeLine, notes, setNotes } = useOrder();
 
   if (lines.length === 0) {
