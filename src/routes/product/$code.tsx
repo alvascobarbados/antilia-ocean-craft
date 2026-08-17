@@ -176,11 +176,17 @@ function Product() {
           <div className="mt-8 grid gap-x-6 gap-y-10 sm:grid-cols-3">
             {series.related.map((r) => (
               <Link key={r.itemCode} to="/product/$code" params={{ code: r.itemCode }} className="group block">
-                <div className="zoom-media aspect-[4/3] w-full bg-surface">
-                  {r.heroImage && (
-                    <img src={r.heroImage} alt={r.itemCode} loading="lazy" className="h-full w-full object-cover" />
+                <div className="zoom-media aspect-square w-full bg-surface">
+                  {(r.cardImage ?? r.heroImage) && (
+                    <img
+                      src={(r.cardImage ?? r.heroImage) as string}
+                      alt={r.itemCode}
+                      loading="lazy"
+                      className="h-full w-full object-cover"
+                    />
                   )}
                 </div>
+
                 <p className="mt-3 text-[14px]">{r.itemCode}</p>
                 <p className="text-[13px] text-muted-foreground">
                   from {Number.isFinite(r.fromPrice) ? money(r.fromPrice) : "—"}

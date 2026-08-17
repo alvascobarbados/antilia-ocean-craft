@@ -6,23 +6,26 @@ export type SeriesCardData = {
   itemCode: string;
   displayName?: string | null;
   heroImage: string | null;
+  cardImage?: string | null;
   fromPrice: number;
   versionCount: number;
 };
 
 export function SeriesCard({ series }: { series: SeriesCardData }) {
+  const image = series.cardImage ?? series.heroImage;
   return (
     <Link to="/product/$code" params={{ code: series.itemCode }} className="group block">
-      <div className="zoom-media aspect-[4/3] w-full bg-surface">
-        {series.heroImage && (
+      <div className="zoom-media aspect-square w-full bg-surface">
+        {image && (
           <img
-            src={series.heroImage}
+            src={image}
             alt={series.displayName ?? series.itemCode}
             loading="lazy"
             className="h-full w-full object-cover"
           />
         )}
       </div>
+
       <div className="mt-4 space-y-1.5">
         <h3 className="text-[15px] font-normal tracking-tight">{series.displayName ?? series.itemCode}</h3>
         <p className="text-[13.5px] text-muted-foreground">

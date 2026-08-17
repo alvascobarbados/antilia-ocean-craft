@@ -31,7 +31,7 @@ export const listSeries = createServerFn({ method: "GET" })
     let query = supabase
       .from("series")
       .select(
-        "id, item_code, display_name, description, hero_image, category_id, variants(id, unit_price_usd, min_qty)",
+        "id, item_code, display_name, description, hero_image, card_image, category_id, variants(id, unit_price_usd, min_qty)",
       )
       .eq("is_published", true)
       .order("item_code");
@@ -47,6 +47,7 @@ export const listSeries = createServerFn({ method: "GET" })
       displayName: s.display_name,
       description: s.description,
       heroImage: s.hero_image,
+      cardImage: s.card_image,
       categoryId: s.category_id,
       versionCount: s.variants?.length ?? 0,
       fromPrice: Math.min(...(s.variants ?? []).map((v) => Number(v.unit_price_usd)), Infinity),
@@ -87,7 +88,7 @@ export const getSeries = createServerFn({ method: "GET" })
 
     const { data: related } = await supabase
       .from("series")
-      .select("id, item_code, hero_image, variants(unit_price_usd)")
+      .select("id, item_code, hero_image, card_image, variants(unit_price_usd)")
       .eq("is_published", true)
       .neq("id", series.id)
       .eq("category_id", series.category_id ?? "")
@@ -118,6 +119,7 @@ export const getSeries = createServerFn({ method: "GET" })
       related: (related ?? []).map((r) => ({
         itemCode: r.item_code,
         heroImage: r.hero_image,
+        cardImage: r.card_image,
         fromPrice: Math.min(...(r.variants ?? []).map((v) => Number(v.unit_price_usd)), Infinity),
       })),
     };
