@@ -128,7 +128,7 @@ export function OrderPanel({
                     </div>
 
                     {line.minQty && line.qty < line.minQty && (
-                      <p className="mt-2 label-xs text-muted-foreground">
+                      <p className="mt-2 label-xs text-notice">
                         Below the typical minimum of {line.minQty} — we'll confirm whether we can run this quantity
                         with your quote.
                       </p>

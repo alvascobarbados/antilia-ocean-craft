@@ -176,7 +176,7 @@ function OrderPage() {
             </div>
 
             {belowCount > 0 && (
-              <p className="mt-8 label-xs text-muted-foreground">
+              <p className="mt-8 label-xs text-notice">
                 {belowCount} {belowCount === 1 ? "line is" : "lines are"} below typical minimums — noted on your
                 request.
               </p>
