@@ -88,6 +88,10 @@ function OrderPage() {
           We'll come back within 2 business days with fabric and finish options, final pricing and an available
           production slot. Nothing is charged online; a deposit is invoiced only once everything is agreed.
         </p>
+        <p className="mt-4 text-[13px] leading-relaxed text-muted-foreground">
+          All prices are in USD on FOB China terms — freight, insurance, duties and local taxes are confirmed with
+          your final quote.
+        </p>
         <div className="mt-10">
           <a href="/collection" className={btn.outline}>
             Back to the collection
@@ -102,7 +106,8 @@ function OrderPage() {
       <Eyebrow>Your order</Eyebrow>
       <h1 className="mt-6 display-xl max-w-[18ch]">Review, then send it to us.</h1>
       <p className="mt-5 max-w-[56ch] text-[14.5px] leading-relaxed text-muted-foreground">
-        This is an order request, not a payment. Prices are factory-direct in USD, before freight and duties.
+        This is an order request, not a payment. All prices are in USD on FOB China terms — freight, insurance,
+        duties and local taxes are confirmed with your final quote.
       </p>
 
       <div className="mt-14 grid gap-16 lg:grid-cols-[1.15fr_1fr] lg:gap-24">
@@ -117,6 +122,7 @@ function OrderPage() {
               {pieces} pieces <span className="text-muted-foreground">·</span> {money(totalCost)}{" "}
               <span className="text-muted-foreground">·</span> {totalCbm.toFixed(1)} m³
             </p>
+            <p className="mt-2 label-xs text-muted-foreground">Prices in USD · FOB China</p>
             <div className="mt-5">
               <ShippingGauge cbm={totalCbm} />
             </div>

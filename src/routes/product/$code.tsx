@@ -117,7 +117,10 @@ function Product() {
                           {v.productSize ?? "—"} · {v.cbm.toFixed(2)} m³
                         </p>
                       </div>
-                      <p className="whitespace-nowrap text-[15px]">{money(v.price)}</p>
+                      <div className="text-right">
+                        <p className="whitespace-nowrap text-[15px]">{money(v.price)}</p>
+                        <p className="mt-1 label-xs text-muted-foreground">USD · FOB</p>
+                      </div>
                     </div>
 
                     <div className="mt-4 flex flex-wrap items-center gap-3">

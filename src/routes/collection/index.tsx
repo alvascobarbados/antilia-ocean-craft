@@ -35,6 +35,9 @@ function Collection() {
     <div className="mx-auto max-w-[1600px] px-5 py-16 md:px-10 md:py-24">
       <Eyebrow>The collection</Eyebrow>
       <h1 className="mt-6 display-xl max-w-[16ch]">Everything is made to order.</h1>
+      <p className="mt-5 max-w-[56ch] text-[14.5px] leading-relaxed text-muted-foreground">
+        Factory-direct, made to order and shipped by sea. Prices in USD, FOB China.
+      </p>
 
       <nav className="mt-12 flex flex-wrap gap-x-8 gap-y-3 border-y border-border py-4">
         <span className="label-xs">All</span>

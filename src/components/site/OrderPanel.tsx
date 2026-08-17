@@ -144,6 +144,7 @@ export function OrderPanel({ onNavigate }: { onNavigate?: () => void }) {
           {pieces} pieces <span className="text-muted-foreground">·</span> {money(totalCost)}{" "}
           <span className="text-muted-foreground">·</span> {totalCbm.toFixed(1)} m³
         </p>
+        <p className="label-xs text-muted-foreground">Prices in USD · FOB China</p>
         <ShippingGauge cbm={totalCbm} compact />
         <div className="grid gap-2 sm:grid-cols-2">
           <Link to="/order" className={btn.primary} onClick={onNavigate}>

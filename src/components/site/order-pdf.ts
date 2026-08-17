@@ -52,9 +52,12 @@ export function downloadOrderPdf(lines: OrderLine[], notes: string) {
   y += 20;
   doc.setFontSize(10);
   doc.text(`${pieces} pieces   ·   $${cost.toLocaleString("en-US")}   ·   ${cbm.toFixed(1)} m³`, left, y);
-  y += 20;
-  doc.setFontSize(9);
+  y += 16;
+  doc.setFontSize(8.5);
   doc.setTextColor(120);
+  doc.text("PRICES IN USD  ·  FOB CHINA", left, y);
+  y += 18;
+  doc.setFontSize(9);
   doc.text(shippingFit(cbm).caption, left, y, { maxWidth: 460 });
 
   if (notes.trim()) {
@@ -71,7 +74,7 @@ export function downloadOrderPdf(lines: OrderLine[], notes: string) {
   doc.setFontSize(7.5);
   doc.setTextColor(140);
   doc.text(
-    "Pricing shown is factory-direct (FOB) in USD; freight, duties and taxes are confirmed with your order.",
+    "All prices are in USD on FOB China terms — freight, insurance, duties and local taxes are confirmed with your final quote.",
     left,
     y,
     { maxWidth: 460 },
