@@ -1,0 +1,1 @@
+ALTER TABLE public.order_lines ADD COLUMN IF NOT EXISTS below_minimum boolean NOT NULL DEFAULT false;
