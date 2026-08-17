@@ -123,6 +123,21 @@ function OrderPage() {
               <span className="text-muted-foreground">·</span> {totalCbm.toFixed(1)} m³
             </p>
             <p className="mt-2 label-xs text-muted-foreground">Prices in USD · FOB China</p>
+
+            <div className="mt-5 border-t border-border pt-5">
+              <div className="flex items-center gap-2">
+                <span className="h-1.5 w-1.5 rounded-full bg-foreground/40" />
+                <span className="h-px flex-1 bg-border" />
+                <span className="h-1.5 w-1.5 rounded-full bg-foreground/40" />
+                <span className="h-px flex-1 bg-border" />
+                <span className="h-1.5 w-1.5 rounded-full bg-foreground/40" />
+              </div>
+              <p className="mt-4 label-xs text-muted-foreground">Order today · Estimated arrival</p>
+              <p className="mt-2 text-[15px]">{arrival.full}</p>
+              <p className="mt-2 text-[12.5px] leading-relaxed text-muted-foreground">
+                Includes production (6–8 weeks) and sea freight. Confirmed with your final quote.
+              </p>
+            </div>
             <div className="mt-5">
               <ShippingGauge cbm={totalCbm} />
             </div>
