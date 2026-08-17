@@ -14,7 +14,7 @@ export const Route = createFileRoute("/")({
       { property: "og:title", content: "Antilia Supply Co. — Made-to-order furniture, factory-direct" },
       {
         property: "og:description",
-        content: "Made-to-order furniture, factory-direct to the Caribbean. Production 6–8 weeks, ships by sea.",
+        content: "Made-to-order furniture, factory-direct to the Caribbean. Designed profiles, 6–8 week production, delivered by sea for designers, developers and private clients.",
       },
     ],
   }),

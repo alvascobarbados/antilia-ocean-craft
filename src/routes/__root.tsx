@@ -80,15 +80,21 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
     meta: [
       { charSet: "utf-8" },
       { name: "viewport", content: "width=device-width, initial-scale=1" },
-      { title: "Antilia Supply Co. — Made-to-order furniture" },
+      { title: "Antilia Supply Co. — Made-to-order furniture, factory-direct" },
       {
         name: "description",
         content:
-          "Made-to-order furniture, factory-direct to the Caribbean. Designed profiles, six to eight week production, delivered by sea.",
+          "Made-to-order furniture, factory-direct to the Caribbean. Designed profiles, 6–8 week production, delivered by sea for designers, developers and private clients.",
       },
       { name: "author", content: "Antilia Supply Co." },
       { property: "og:type", content: "website" },
       { name: "twitter:card", content: "summary_large_image" },
+      { property: "og:title", content: "Antilia Supply Co. — Made-to-order furniture, factory-direct" },
+      { name: "twitter:title", content: "Antilia Supply Co. — Made-to-order furniture, factory-direct" },
+      { property: "og:description", content: "Made-to-order furniture, factory-direct to the Caribbean. Designed profiles, 6–8 week production, delivered by sea for designers, developers and private clients." },
+      { name: "twitter:description", content: "Made-to-order furniture, factory-direct to the Caribbean. Designed profiles, 6–8 week production, delivered by sea for designers, developers and private clients." },
+      { property: "og:image", content: "https://pub-bb2e103a32db4e198524a2e9ed8f35b4.r2.dev/97348b4a1fe0b09e654bb90f81a624c7/id-preview-fdd43cfa--67b11af9-3780-457e-9e3d-fdf0079db762.lovable.app-1786950372682.png" },
+      { name: "twitter:image", content: "https://pub-bb2e103a32db4e198524a2e9ed8f35b4.r2.dev/97348b4a1fe0b09e654bb90f81a624c7/id-preview-fdd43cfa--67b11af9-3780-457e-9e3d-fdf0079db762.lovable.app-1786950372682.png" },
     ],
     links: [
       { rel: "stylesheet", href: appCss },
