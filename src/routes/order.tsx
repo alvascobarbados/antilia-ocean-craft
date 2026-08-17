@@ -37,6 +37,7 @@ function OrderPage() {
   const { lines, pieces, totalCost, totalCbm, notes, replaceAll, setNotes, clear } = useOrder();
   const [submitting, setSubmitting] = useState(false);
   const [done, setDone] = useState(false);
+  const arrival = deliveryWindow();
 
   useEffect(() => {
     if (!d) return;
