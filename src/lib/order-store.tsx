@@ -9,6 +9,7 @@ export type OrderLine = {
   price: number;
   cbm: number;
   qty: number;
+  minQty?: number;
 };
 
 type OrderContextValue = {

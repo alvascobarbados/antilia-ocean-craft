@@ -39,6 +39,7 @@ function OrderPage() {
   const [submitting, setSubmitting] = useState(false);
   const [done, setDone] = useState(false);
   const arrival = deliveryWindow();
+  const belowCount = lines.filter((l) => l.minQty && l.qty < l.minQty).length;
 
   useEffect(() => {
     if (!d) return;
@@ -68,6 +69,7 @@ function OrderPage() {
             variantId: l.variantId,
             qty: l.qty,
             label: `${l.seriesCode} — ${l.variantName}`,
+            belowMinimum: Boolean(l.minQty && l.qty < l.minQty),
           })),
         },
       });
@@ -124,7 +126,7 @@ function OrderPage() {
           <div className="border border-border p-6">
             <p className="label-xs text-muted-foreground">Summary</p>
             <p className="mt-4 text-[15px]">
-              {pieces} pieces <span className="text-muted-foreground">·</span> {money(totalCost)}{" "}
+              {pieces} {pieces === 1 ? "piece" : "pieces"} <span className="text-muted-foreground">·</span> {money(totalCost)}{" "}
               <span className="text-muted-foreground">·</span> {totalCbm.toFixed(1)} m³
             </p>
             <p className="mt-2 label-xs text-muted-foreground">Prices in USD · FOB China</p>
@@ -172,6 +174,13 @@ function OrderPage() {
                 <input name="phone" maxLength={60} className={field} />
               </label>
             </div>
+
+            {belowCount > 0 && (
+              <p className="mt-8 label-xs text-muted-foreground">
+                {belowCount} {belowCount === 1 ? "line is" : "lines are"} below typical minimums — noted on your
+                request.
+              </p>
+            )}
 
             <button type="submit" disabled={submitting || lines.length === 0} className={`${btn.primary} mt-8 w-full`}>
               {submitting ? "Sending…" : "Send order request"}

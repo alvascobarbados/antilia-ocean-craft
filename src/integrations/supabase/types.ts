@@ -51,6 +51,7 @@ export type Database = {
       }
       order_lines: {
         Row: {
+          below_minimum: boolean
           cbm: number
           id: string
           label: string | null
@@ -60,6 +61,7 @@ export type Database = {
           variant_id: string | null
         }
         Insert: {
+          below_minimum?: boolean
           cbm?: number
           id?: string
           label?: string | null
@@ -69,6 +71,7 @@ export type Database = {
           variant_id?: string | null
         }
         Update: {
+          below_minimum?: boolean
           cbm?: number
           id?: string
           label?: string | null

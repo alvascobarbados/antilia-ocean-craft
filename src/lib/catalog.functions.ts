@@ -136,6 +136,7 @@ const submitSchema = z.object({
         variantId: z.string().uuid(),
         qty: z.number().int().min(1).max(10000),
         label: z.string().max(200),
+        belowMinimum: z.boolean().optional(),
       }),
     )
     .min(1)
@@ -194,6 +195,7 @@ export const submitOrder = createServerFn({ method: "POST" })
         unit_price_usd: Number(byId.get(l.variantId)?.unit_price_usd ?? 0),
         cbm: Number(byId.get(l.variantId)?.cbm ?? 0),
         label: l.label,
+        below_minimum: Boolean(l.belowMinimum),
       })),
     );
     if (lineError) throw new Error(lineError.message);

@@ -66,7 +66,10 @@ export function OrderPanel({
                 {code}
               </Link>
               <span className="label-xs text-muted-foreground">
-                {group.reduce((s, l) => s + l.qty, 0)} pieces
+                {(() => {
+                  const n = group.reduce((s, l) => s + l.qty, 0);
+                  return `${n} ${n === 1 ? "piece" : "pieces"}`;
+                })()}
               </span>
             </div>
 
@@ -124,6 +127,11 @@ export function OrderPanel({
                       </button>
                     </div>
 
+                    {line.minQty && line.qty < line.minQty && (
+                      <p className="mt-2 label-xs text-muted-foreground">
+                        Below typical minimum of {line.minQty} — we'll confirm with your quote.
+                      </p>
+                    )}
                   </div>
                 </div>
               );
@@ -148,7 +156,7 @@ export function OrderPanel({
 
       <div className="sticky bottom-0 mt-8 space-y-5 border-t border-border bg-background pt-5">
         <p className="text-[14px]">
-          {pieces} pieces <span className="text-muted-foreground">·</span> {money(totalCost)}{" "}
+          {pieces} {pieces === 1 ? "piece" : "pieces"} <span className="text-muted-foreground">·</span> {money(totalCost)}{" "}
           <span className="text-muted-foreground">·</span> {totalCbm.toFixed(1)} m³
         </p>
         <p className="label-xs text-muted-foreground">Prices in USD · FOB China</p>
