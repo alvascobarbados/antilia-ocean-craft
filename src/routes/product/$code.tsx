@@ -41,7 +41,7 @@ function Product() {
   const images = [series.heroImage, ...(series.gallery as string[])].filter(Boolean) as string[];
 
   const add = (variant: (typeof series.variants)[number]) => {
-    const n = qty[variant.id] ?? variant.minQty;
+    const n = qty[variant.id] ?? 1;
     addLine({
       variantId: variant.id,
       variantName: variant.name,
@@ -50,7 +50,6 @@ function Product() {
       image: series.heroImage,
       price: variant.price,
       cbm: variant.cbm,
-      minQty: variant.minQty,
       qty: n,
     });
     toast.success(`${variant.name} added to your order`);
@@ -108,14 +107,14 @@ function Product() {
             <p className="py-4 label-xs text-muted-foreground">Versions</p>
             <ul className="divide-y divide-border border-t border-border">
               {series.variants.map((v) => {
-                const value = qty[v.id] ?? v.minQty;
+                const value = qty[v.id] ?? 1;
                 return (
                   <li key={v.id} className="py-5">
                     <div className="flex items-start justify-between gap-6">
                       <div>
                         <p className="text-[15px]">{v.name}</p>
                         <p className="mt-1.5 text-[13px] text-muted-foreground">
-                          {v.productSize ?? "—"} · {v.cbm.toFixed(2)} m³ · min {v.minQty}
+                          {v.productSize ?? "—"} · {v.cbm.toFixed(2)} m³
                         </p>
                       </div>
                       <p className="whitespace-nowrap text-[15px]">{money(v.price)}</p>
