@@ -126,7 +126,7 @@ function OrderPage() {
           <div className="border border-border p-6">
             <p className="label-xs text-muted-foreground">Summary</p>
             <p className="mt-4 text-[15px]">
-              {pieces} pieces <span className="text-muted-foreground">·</span> {money(totalCost)}{" "}
+              {pieces} {pieces === 1 ? "piece" : "pieces"} <span className="text-muted-foreground">·</span> {money(totalCost)}{" "}
               <span className="text-muted-foreground">·</span> {totalCbm.toFixed(1)} m³
             </p>
             <p className="mt-2 label-xs text-muted-foreground">Prices in USD · FOB China</p>

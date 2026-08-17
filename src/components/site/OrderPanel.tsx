@@ -156,7 +156,7 @@ export function OrderPanel({
 
       <div className="sticky bottom-0 mt-8 space-y-5 border-t border-border bg-background pt-5">
         <p className="text-[14px]">
-          {pieces} pieces <span className="text-muted-foreground">·</span> {money(totalCost)}{" "}
+          {pieces} {pieces === 1 ? "piece" : "pieces"} <span className="text-muted-foreground">·</span> {money(totalCost)}{" "}
           <span className="text-muted-foreground">·</span> {totalCbm.toFixed(1)} m³
         </p>
         <p className="label-xs text-muted-foreground">Prices in USD · FOB China</p>
