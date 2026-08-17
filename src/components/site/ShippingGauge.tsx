@@ -13,7 +13,7 @@ export function ShippingGauge({ cbm, compact = false }: { cbm: number; compact?:
         </span>
       </div>
 
-      <div className="relative w-full pb-5">
+      <div className="relative w-full pb-9">
         <div className="relative h-[3px] w-full bg-border">
           <div
             className={cn(
@@ -24,7 +24,7 @@ export function ShippingGauge({ cbm, compact = false }: { cbm: number; compact?:
             )}
             style={{ width: `${Math.max(fit.fill * 100, cbm > 0 ? 1 : 0)}%` }}
           />
-          {CONTAINER_MARKS.map((m) => {
+          {CONTAINER_MARKS.map((m, i) => {
             const left = (m.capacity / CONTAINER_SCALE_MAX) * 100;
             const passed = cbm >= m.capacity;
             return (
@@ -34,7 +34,8 @@ export function ShippingGauge({ cbm, compact = false }: { cbm: number; compact?:
                 />
                 <span
                   className={cn(
-                    "absolute left-0 top-[10px] whitespace-nowrap label-xs",
+                    "absolute left-0 whitespace-nowrap label-xs",
+                    i === 1 ? "top-[24px]" : "top-[10px]",
                     left >= 100 ? "-translate-x-full" : "-translate-x-1/2",
                     passed ? "text-foreground" : "text-muted-foreground/60",
                   )}
