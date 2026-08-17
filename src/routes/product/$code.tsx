@@ -115,8 +115,9 @@ function Product() {
                       <div>
                         <p className="text-[15px]">{v.name}</p>
                         <p className="mt-1.5 text-[13px] text-muted-foreground">
-                          {v.productSize ?? "—"} · {v.cbm.toFixed(2)} m³
+                          {v.productSize ?? "—"} · {v.cbm.toFixed(2)} m³{v.minQty ? ` · MOQ ${v.minQty}` : ""}
                         </p>
+
                       </div>
                       <div className="text-right">
                         <p className="whitespace-nowrap text-[15px]">{money(v.price)}</p>
@@ -141,11 +142,6 @@ function Product() {
                         {(v.cbm * value).toFixed(2)} m³ · {money(v.price * value)}
                       </span>
                     </div>
-                    {v.minQty && value < v.minQty && (
-                      <p className="mt-2 label-xs text-muted-foreground">
-                        Below typical minimum of {v.minQty} — we'll confirm with your quote.
-                      </p>
-                    )}
                   </li>
                 );
               })}
