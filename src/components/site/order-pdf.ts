@@ -60,6 +60,20 @@ export function downloadOrderPdf(lines: OrderLine[], notes: string) {
   doc.setFontSize(9);
   doc.text(shippingFit(cbm).caption, left, y, { maxWidth: 460 });
 
+  y += 26;
+  doc.setTextColor(20);
+  doc.setFontSize(8);
+  doc.text("ORDER TODAY  ·  ESTIMATED ARRIVAL", left, y);
+  y += 15;
+  doc.setFontSize(9.5);
+  doc.text(deliveryWindow().full, left, y);
+  y += 14;
+  doc.setFontSize(8.5);
+  doc.setTextColor(120);
+  doc.text("Includes production (6–8 weeks) and sea freight. Confirmed with your final quote.", left, y, {
+    maxWidth: 460,
+  });
+
   if (notes.trim()) {
     y += 30;
     doc.setTextColor(20);
