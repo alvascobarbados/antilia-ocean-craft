@@ -41,7 +41,7 @@ export function OrderDrawer() {
           </button>
         </div>
         <div className="flex flex-1 flex-col overflow-y-auto px-6 pb-6">
-          <OrderPanel onNavigate={() => setOpen(false)} />
+          <OrderPanel variant="drawer" onNavigate={() => setOpen(false)} />
         </div>
       </aside>
     </>
