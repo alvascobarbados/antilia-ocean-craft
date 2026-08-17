@@ -50,6 +50,7 @@ function Product() {
       image: series.heroImage,
       price: variant.price,
       cbm: variant.cbm,
+      minQty: variant.minQty,
       qty: n,
     });
     toast.success(`${variant.name} added to your order`);
@@ -140,6 +141,11 @@ function Product() {
                         {(v.cbm * value).toFixed(2)} m³ · {money(v.price * value)}
                       </span>
                     </div>
+                    {v.minQty && value < v.minQty && (
+                      <p className="mt-2 label-xs text-muted-foreground">
+                        Below typical minimum of {v.minQty} — we'll confirm with your quote.
+                      </p>
+                    )}
                   </li>
                 );
               })}

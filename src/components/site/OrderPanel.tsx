@@ -66,7 +66,10 @@ export function OrderPanel({
                 {code}
               </Link>
               <span className="label-xs text-muted-foreground">
-                {group.reduce((s, l) => s + l.qty, 0)} pieces
+                {(() => {
+                  const n = group.reduce((s, l) => s + l.qty, 0);
+                  return `${n} ${n === 1 ? "piece" : "pieces"}`;
+                })()}
               </span>
             </div>
 
@@ -124,6 +127,11 @@ export function OrderPanel({
                       </button>
                     </div>
 
+                    {line.minQty && line.qty < line.minQty && (
+                      <p className="mt-2 label-xs text-muted-foreground">
+                        Below typical minimum of {line.minQty} — we'll confirm with your quote.
+                      </p>
+                    )}
                   </div>
                 </div>
               );
