@@ -6,6 +6,7 @@ import { btn, Eyebrow } from "@/components/site/atoms";
 import { OrderPanel } from "@/components/site/OrderPanel";
 import { ShippingGauge } from "@/components/site/ShippingGauge";
 import { submitOrder } from "@/lib/catalog.functions";
+import { deliveryWindow } from "@/lib/delivery";
 import { decodeOrder, useOrder } from "@/lib/order-store";
 import { money } from "@/lib/shipping";
 
@@ -37,6 +38,7 @@ function OrderPage() {
   const { lines, pieces, totalCost, totalCbm, notes, replaceAll, setNotes, clear } = useOrder();
   const [submitting, setSubmitting] = useState(false);
   const [done, setDone] = useState(false);
+  const arrival = deliveryWindow();
 
   useEffect(() => {
     if (!d) return;
@@ -89,6 +91,9 @@ function OrderPage() {
           production slot. Nothing is charged online; a deposit is invoiced only once everything is agreed.
         </p>
         <p className="mt-4 text-[13px] leading-relaxed text-muted-foreground">
+          Based on today's date, estimated arrival {arrival.full}. Includes production (6–8 weeks) and sea freight.
+        </p>
+        <p className="mt-4 text-[13px] leading-relaxed text-muted-foreground">
           All prices are in USD on FOB China terms — freight, insurance, duties and local taxes are confirmed with
           your final quote.
         </p>
@@ -123,6 +128,21 @@ function OrderPage() {
               <span className="text-muted-foreground">·</span> {totalCbm.toFixed(1)} m³
             </p>
             <p className="mt-2 label-xs text-muted-foreground">Prices in USD · FOB China</p>
+
+            <div className="mt-5 border-t border-border pt-5">
+              <div className="flex items-center gap-2">
+                <span className="h-1.5 w-1.5 rounded-full bg-foreground/40" />
+                <span className="h-px flex-1 bg-border" />
+                <span className="h-1.5 w-1.5 rounded-full bg-foreground/40" />
+                <span className="h-px flex-1 bg-border" />
+                <span className="h-1.5 w-1.5 rounded-full bg-foreground/40" />
+              </div>
+              <p className="mt-4 label-xs text-muted-foreground">Order today · Estimated arrival</p>
+              <p className="mt-2 text-[15px]">{arrival.full}</p>
+              <p className="mt-2 text-[12.5px] leading-relaxed text-muted-foreground">
+                Includes production (6–8 weeks) and sea freight. Confirmed with your final quote.
+              </p>
+            </div>
             <div className="mt-5">
               <ShippingGauge cbm={totalCbm} />
             </div>

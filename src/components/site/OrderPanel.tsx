@@ -5,6 +5,7 @@ import { toast } from "sonner";
 import { btn } from "@/components/site/atoms";
 import { ShippingGauge } from "@/components/site/ShippingGauge";
 import { downloadOrderPdf } from "@/components/site/order-pdf";
+import { deliveryWindow } from "@/lib/delivery";
 import { encodeOrder, useOrder, type OrderLine } from "@/lib/order-store";
 import { money } from "@/lib/shipping";
 
@@ -18,7 +19,13 @@ function groupBySeries(lines: OrderLine[]) {
   return [...groups.entries()];
 }
 
-export function OrderPanel({ onNavigate }: { onNavigate?: () => void }) {
+export function OrderPanel({
+  onNavigate,
+  variant = "page",
+}: {
+  onNavigate?: () => void;
+  variant?: "page" | "drawer";
+}) {
   const { lines, pieces, totalCost, totalCbm, setQty, removeLine, notes, setNotes } = useOrder();
 
   if (lines.length === 0) {
@@ -145,6 +152,9 @@ export function OrderPanel({ onNavigate }: { onNavigate?: () => void }) {
           <span className="text-muted-foreground">·</span> {totalCbm.toFixed(1)} m³
         </p>
         <p className="label-xs text-muted-foreground">Prices in USD · FOB China</p>
+        {variant === "drawer" && (
+          <p className="label-xs text-muted-foreground">Arrives ~{deliveryWindow().short}</p>
+        )}
         <ShippingGauge cbm={totalCbm} compact />
         <div className="grid gap-2 sm:grid-cols-2">
           <Link to="/order" className={btn.primary} onClick={onNavigate}>
