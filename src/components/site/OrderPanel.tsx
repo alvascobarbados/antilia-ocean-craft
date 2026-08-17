@@ -5,6 +5,7 @@ import { toast } from "sonner";
 import { btn } from "@/components/site/atoms";
 import { ShippingGauge } from "@/components/site/ShippingGauge";
 import { downloadOrderPdf } from "@/components/site/order-pdf";
+import { deliveryWindow } from "@/lib/delivery";
 import { encodeOrder, useOrder, type OrderLine } from "@/lib/order-store";
 import { money } from "@/lib/shipping";
 
