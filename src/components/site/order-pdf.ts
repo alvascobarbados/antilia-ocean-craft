@@ -1,5 +1,6 @@
 import { jsPDF } from "jspdf";
 
+import { deliveryWindow } from "@/lib/delivery";
 import type { OrderLine } from "@/lib/order-store";
 import { shippingFit } from "@/lib/shipping";
 
