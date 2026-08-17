@@ -144,6 +144,7 @@ export type Database = {
       }
       series: {
         Row: {
+          card_image: string | null
           category_id: string | null
           construction_notes: string | null
           created_at: string
@@ -156,6 +157,7 @@ export type Database = {
           item_code: string
         }
         Insert: {
+          card_image?: string | null
           category_id?: string | null
           construction_notes?: string | null
           created_at?: string
@@ -168,6 +170,7 @@ export type Database = {
           item_code: string
         }
         Update: {
+          card_image?: string | null
           category_id?: string | null
           construction_notes?: string | null
           created_at?: string
