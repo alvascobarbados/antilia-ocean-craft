@@ -91,6 +91,9 @@ function OrderPage() {
           production slot. Nothing is charged online; a deposit is invoiced only once everything is agreed.
         </p>
         <p className="mt-4 text-[13px] leading-relaxed text-muted-foreground">
+          Based on today's date, estimated arrival {arrival.full}. Includes production (6–8 weeks) and sea freight.
+        </p>
+        <p className="mt-4 text-[13px] leading-relaxed text-muted-foreground">
           All prices are in USD on FOB China terms — freight, insurance, duties and local taxes are confirmed with
           your final quote.
         </p>
