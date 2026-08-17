@@ -9,12 +9,11 @@ import { submitOrder } from "@/lib/catalog.functions";
 import { decodeOrder, useOrder } from "@/lib/order-store";
 import { money } from "@/lib/shipping";
 
-type Search = { d?: string };
+type Search = { d?: string | undefined };
 
 export const Route = createFileRoute("/order")({
-  validateSearch: (search: Record<string, unknown>): Search => ({
-    d: typeof search.d === "string" ? search.d : undefined,
-  }),
+  validateSearch: (search: Record<string, unknown>): Search =>
+    typeof search["d"] === "string" ? { d: search["d"] } : {},
   head: () => ({
     meta: [
       { title: "Your order — Antilia Supply Co." },
