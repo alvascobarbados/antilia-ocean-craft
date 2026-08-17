@@ -64,7 +64,6 @@ export function OrderPanel({ onNavigate }: { onNavigate?: () => void }) {
             </div>
 
             {group.map((line) => {
-              const under = line.qty < line.minQty;
               return (
                 <div key={line.variantId} className="flex gap-4 border-b border-border py-5">
                   <div className="h-20 w-24 shrink-0 bg-surface">
@@ -118,11 +117,6 @@ export function OrderPanel({ onNavigate }: { onNavigate?: () => void }) {
                       </button>
                     </div>
 
-                    {under && (
-                      <p className="mt-2 text-[12.5px] text-muted-foreground">
-                        Made in minimums of {line.minQty} — we'll confirm if you'd like fewer.
-                      </p>
-                    )}
                   </div>
                 </div>
               );

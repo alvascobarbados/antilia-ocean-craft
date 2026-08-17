@@ -8,7 +8,6 @@ export type OrderLine = {
   image: string | null;
   price: number;
   cbm: number;
-  minQty: number;
   qty: number;
 };
 
