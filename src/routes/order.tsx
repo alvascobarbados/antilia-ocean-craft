@@ -6,6 +6,7 @@ import { btn, Eyebrow } from "@/components/site/atoms";
 import { OrderPanel } from "@/components/site/OrderPanel";
 import { ShippingGauge } from "@/components/site/ShippingGauge";
 import { submitOrder } from "@/lib/catalog.functions";
+import { deliveryWindow } from "@/lib/delivery";
 import { decodeOrder, useOrder } from "@/lib/order-store";
 import { money } from "@/lib/shipping";
 
